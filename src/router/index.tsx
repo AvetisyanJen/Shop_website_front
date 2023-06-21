@@ -1,10 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from '../components/layout';
-import Home from '../pages/home';
-import SignUp from '../pages/register';
-import Login from '../pages/login';
-import Cart from '../pages/cart';
+import Footer from '../components/footer/footer';
+import Home from '../pages/mainPage/Home';
+import Login from '../pages/user/login';
+import Product from '../pages/products/filterProducts';
+import CartPage from '../pages/cart/cartPage';
+// import Home from '../pages/home';
+// import SignUp from '../pages/register';
+// import Login from '../pages/login';
+// import Cart from '../pages/cart';
+// import ProtectedRoute from './privatRouter';
+// import AdminPage from '../pages/AdminPanel/AdminPage';
+// import Categories from '../pages/AdminPanel/Categories';
+// import Order from '../pages/order';
 
 
 const App: React.FC = () => {
@@ -15,14 +24,27 @@ const App: React.FC = () => {
           path="/"
           element={<Layout />}
         >
-          <Route path="" element={<Home />} />
-          <Route path="/Register" element={<SignUp/>} />
-          <Route path="login"   element={<Login/>}/>
+           <Route path="" element={<Home/>} />
+           <Route path="/login"   element={<Login/>}/>
+           <Route path="products" element={<Product/>}/>
+             
+          {/* <Route path="cart" element={<CartPage/>}/> */}
+          {/* <Route path="/Register" element={<SignUp/>} />
+       
           <Route path="cart" element={<Cart/>}/>
+          <Route path="order" element={<Order/>}/>  */}
+{/* 
+          <Route path="adminPage" element={<ProtectedRoute><AdminPage /></ProtectedRoute>}> */}
+                {/* <Route path="products/editProduct/:id" element={<ProtectedRoute><EditProduct/></ProtectedRoute>}/>
+              <Route path="products" element={<ProtectedRoute><Products /></ProtectedRoute>}/>
+              <Route path="products/addProduct" element={<ProtectedRoute><CreateProduct /></ProtectedRoute>}/> */}
+               {/* <Route path="categories" element={<ProtectedRoute><Categories /></ProtectedRoute>}/> */}
+            {/* </Route> */}
       
       
         </Route>
       </Routes>
+      <Footer/>
     </Router>
   );
 };

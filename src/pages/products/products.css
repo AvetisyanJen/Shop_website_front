@@ -1,0 +1,149 @@
+.product-container {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content:start;
+  /* align-items: center; */
+  gap:10px;
+}
+.products {
+  flex: 1;
+}
+
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color:#F0F0F0;
+  margin-top: 15px;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 4px;
+  
+}
+
+.child-input{
+  display: flex;
+}
+.filter-item-input {
+  margin-right: 5px;
+  align-self: flex-start;
+  
+}
+
+.filter-item-name {
+  margin-left: 5px;
+  white-space: nowrap;
+  font-size: smaller;
+  
+}
+
+.filter-item-input:first-child {
+  margin-left: 0;
+}
+
+.isactive{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  margin-top: 30px;
+  border-bottom: 3px solid #EDBA02;
+}
+.isactive i{
+  margin-bottom: 6px;
+  color: #4b4f53;
+}
+
+.price-filter{
+  margin-top: 30px;
+}
+
+.price-range {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.price-range input {
+  width: 100px;
+  margin: 10px;
+  background-color: white;
+}
+.cleare-filters{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 70px;
+  margin-top: 30px;
+}
+.cleare-filters button{
+  border: none;
+}
+
+/* products list */
+ .product-list{
+	display: flex;
+ 	justify-content: center;
+ 	gap: 20px;
+ 	flex-wrap: wrap;
+   border: 1px solid #ccc;
+   padding: 10px;
+   margin-bottom: 10px;
+   min-height: min-content;
+
+ }
+ .flash {
+  background: #f6f9fc;
+  padding: 50px 0;
+}
+
+.product {
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgba(58, 5, 41, 0.09) 0px 6px 5px;
+  margin: 10px;
+}
+.product h3 {
+  /* font-weight: 400; */
+  /* font-size: 17px; */
+}
+.product .rate i {
+  font-size: 15px;
+  color: #ffcd4e;
+  margin: 5px 5px 5px 0;
+}
+.product .price {
+  display: flex;
+  justify-content: space-between;
+  color:#4b4f53;
+
+  
+}
+.price i {
+  background: none;
+  color: #2e2a2a;
+  font-size: 25px;
+  text-align: center;
+  transition: 0.5s;
+ 
+  /* width: 10px; */
+   height: 40px; 
+  border-radius: 50%;
+}
+
+
+.price i:hover {
+  cursor: pointer;
+  color: #730f06;
+
+ 
+}
+
+

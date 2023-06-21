@@ -1,0 +1,29 @@
+.homeSlide h1 {
+    font-size: 45px;
+    line-height: 55px;
+    margin: 50px 0 20px 0;
+  }
+  .homeSlide p {
+    margin: 20px 0;
+  }
+  .homeSlide ul {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+  }
+ 
+
+  .homeSlide ul li button {
+    background: transparent !important;
+    color: transparent !important;
+  }
+  .homeSlide ul li button::before {
+    font-size: 10px !important;
+    color: #81058a;
+
+    position: absolute;
+    top: 2px;
+    left: 0;
+    margin: auto;
+  } 
+   

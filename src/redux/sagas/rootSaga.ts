@@ -1,9 +1,13 @@
 import { takeEvery } from "redux-saga/effects";
-import { actionCart, actionOrder, actionProducts, actionUser } from "./sagaActions";
+import { actionBrand, actionCart, actionCategory, actionGender, actionMovement, actionOrder, actionProducts, actionUser } from "./sagaActions";
 import { getProductsSaga } from "./handlers/productsSaga";
 import { addUserSaga, loginUserSaga } from "./handlers/userSaga";
 import { addCartSaga, decremCartSaga, deleteCartSaga, getCartSaga, incremCartSaga } from "./handlers/cartSaga";
-import { addOrderSaga } from "./handlers/orderSaga";
+import { addOrderSaga, getOrderSaga } from "./handlers/orderSaga";
+import { addCategorySaga, getCategorySaga } from "./handlers/categorySaga";
+import { getMovementSaga } from "./handlers/movementSaga";
+import { getBrandSaga } from "./handlers/brandSaga";
+import { getGenderSaga } from "./handlers/genderSaga";
 
 export default function* watchSaga() {
   yield takeEvery(actionProducts.GET_PRODUCTS, getProductsSaga);
@@ -14,5 +18,11 @@ export default function* watchSaga() {
   yield takeEvery(actionCart.INCREMENT,incremCartSaga),
   yield takeEvery(actionCart.DECREMENT,decremCartSaga),
   yield takeEvery(actionCart.DELETE_CART,deleteCartSaga),
-  yield takeEvery(actionOrder.PAYMENT,addOrderSaga)
+  yield takeEvery(actionOrder.PAYMENT,addOrderSaga),
+  yield takeEvery(actionCategory.GET_CATEGORY,getCategorySaga)
+  yield takeEvery (actionCategory.ADD_CATEGORY,addCategorySaga)
+  yield takeEvery( actionOrder.GET_ORDER,getOrderSaga)
+  yield takeEvery (actionMovement.GET_MOVEMENT,getMovementSaga)
+  yield takeEvery (actionBrand.GET_BRAND,getBrandSaga)
+  yield takeEvery(actionGender.GET_GENDER,getGenderSaga)
 }

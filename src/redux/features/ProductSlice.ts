@@ -10,7 +10,18 @@ export interface Category {
   id: number;
   name: string;
 }
-
+export interface Brand {
+  id: number;
+  name: string;
+}
+export interface Movement{
+  id: number;
+  name: string;
+}
+export interface Gender{
+  id: number;
+  name: string;
+}
 export interface Product {
   id: number;
   name: string;
@@ -18,8 +29,11 @@ export interface Product {
   description: string;
   count: number;
   categoryId: number;
-  category: Category; // Assuming you want to include the category information
-  Photos: Photos[]; // Assuming you want to include the photo information
+  Category: Category;
+  Movement: Movement;
+  Brand: Brand; 
+  Photos: Photos[];
+  gender:Gender;
 }
 
 interface ProductState {
