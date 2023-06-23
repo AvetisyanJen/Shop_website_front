@@ -8,6 +8,7 @@ import { allMovements } from "../../redux/features/movementSlice";
 import { allBrands } from "../../redux/features/brandSlice";
 import { allGenders } from "../../redux/features/genderSlice";
 import { decodeToken } from "react-jwt";
+import { Link } from "react-router-dom";
 
 interface Filter {
   [key: string]: string[] | string;
@@ -115,6 +116,7 @@ const Product: React.FC = () => {
     );
   });
     function addToCart(id: number) {
+ 
     const user = localStorage.getItem("token");
     if (user) {
       const decoded: any = decodeToken(user);
@@ -263,11 +265,13 @@ const Product: React.FC = () => {
 {/* product list */}
 
       <div className="product-list">
-     
+
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
             <div className='box' key={product.id}>
+              
             <div className='product mtop'>
+            <Link to={`/productPage/${product.id}`}>
               <div className='img'>
              
             {product.Photos && ( <img src={"http://localhost:3333/images/" + product?.Photos[0]?.url}
@@ -283,18 +287,18 @@ const Product: React.FC = () => {
                   <i className='fa fa-star'></i>
                   <i className='fa fa-star'></i>
                 </div>
+
                 <div className='price'>
                   <h5>${product.price}.00 </h5>
-                  {/* step : 3  
-                   if hami le button ma click garryo bahne 
-                  */}
-                  
                   <i className="fa-solid fa-cart-plus"
-                       onClick={() => addToCart(product.id)}></i>
+                       onClick={() =>  addToCart(product.id) }></i>
                   
                 </div>
+
               </div>
+              </Link>
             </div>
+            
           </div>
           ))
         ) : (

@@ -1,5 +1,6 @@
 export const actionProducts: { [key: string]: string } = {
     GET_PRODUCTS: "Get all products",
+    GET_ONEPRODUCT:'Get one product'
   };
   export const actionUser: { [key: string]: string } = {
     ADD_USER: "Add new user",

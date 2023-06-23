@@ -1,6 +1,6 @@
 import { takeEvery } from "redux-saga/effects";
 import { actionBrand, actionCart, actionCategory, actionGender, actionMovement, actionOrder, actionProducts, actionUser } from "./sagaActions";
-import { getProductsSaga } from "./handlers/productsSaga";
+import { getProductsSaga, getSingleProductSaga } from "./handlers/productsSaga";
 import { addUserSaga, loginUserSaga } from "./handlers/userSaga";
 import { addCartSaga, decremCartSaga, deleteCartSaga, getCartSaga, incremCartSaga } from "./handlers/cartSaga";
 import { addOrderSaga, getOrderSaga } from "./handlers/orderSaga";
@@ -25,4 +25,5 @@ export default function* watchSaga() {
   yield takeEvery (actionMovement.GET_MOVEMENT,getMovementSaga)
   yield takeEvery (actionBrand.GET_BRAND,getBrandSaga)
   yield takeEvery(actionGender.GET_GENDER,getGenderSaga)
+  yield takeEvery(actionProducts.GET_ONEPRODUCT,getSingleProductSaga)
 }

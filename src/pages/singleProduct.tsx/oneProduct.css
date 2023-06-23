@@ -1,0 +1,29 @@
+.slideshow {
+    display: flex;
+    flex-direction: column;
+    padding: 50px 0px 50px 20px;
+  
+  }
+  
+  .big-image {
+    margin-bottom: 30px;
+  }
+  
+  .small-images {
+    display: flex;
+
+  }
+  
+  .prod-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    .txt-box {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-direction: column;
+    }
+  }

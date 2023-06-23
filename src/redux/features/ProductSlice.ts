@@ -38,10 +38,13 @@ export interface Product {
 
 interface ProductState {
   products: Product[];
+  selectedProduct: Product | null;
 }
 
 const initialState: ProductState = {
   products: [],
+  selectedProduct: null,
+
 };
 
 const productSlice = createSlice({
@@ -54,9 +57,18 @@ const productSlice = createSlice({
         products: action.payload,
       };
     },
+    fetchProductSuccess: (state, action: PayloadAction<Product>) => {
+      return {
+        ...state,
+        loading: false,
+        selectedProduct: action.payload,
+      };
+    },
   },
 });
 
 export default productSlice.reducer;
-export const {fetchProducts } = productSlice.actions;
+export const {fetchProducts,  fetchProductSuccess, } = productSlice.actions;
 export const allProducts = (state:RootState):Product[]=> state.product.products
+export const getSelectedProduct = (state: RootState): Product | null =>
+  state.product.selectedProduct;

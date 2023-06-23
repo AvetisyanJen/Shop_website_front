@@ -1,10 +1,10 @@
 
 // import { fetchProducts, Product } from "../features/ProductSlice";
 import { call, put } from "redux-saga/effects";
-import { getData } from "../requests/products";
+import { getData, oneData } from "../requests/products";
 //import { fetchProducts, Product } from "../../features/ProductSlice";
 import { AxiosResponse } from "axios";
-import { Product, fetchProducts } from "../../features/ProductSlice";
+import { Product, fetchProductSuccess, fetchProducts } from "../../features/ProductSlice";
 
 export function* getProductsSaga() {
   try {
@@ -18,4 +18,15 @@ console.log(response)
   }
 }
 
-
+export function* getSingleProductSaga(action: any) {
+  try {
+    const response: AxiosResponse<Product> = yield call(oneData, action.id);
+ 
+      yield put(fetchProductSuccess(response.data));
+    
+    console.log(response)
+  } catch (error: any) {
+    console.error(error);
+    // Handle error if needed
+  }
+}

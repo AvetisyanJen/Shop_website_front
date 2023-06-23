@@ -9,6 +9,7 @@ import CartPage from '../pages/cart/cartPage';
 import Order from '../pages/order/order';
 import ProtectedRoute from './privatRouter';
 import Found from '../pages/found';
+import SingleProduct from '../pages/singleProduct.tsx/oneProduct';
 
 // import ProtectedRoute from './privatRouter';
 // import AdminPage from '../pages/AdminPanel/AdminPage';
@@ -30,18 +31,7 @@ const App: React.FC = () => {
           <Route path="order" element={<Order/>}/>  
           <Route path="*" element={<Found/>} />
           <Route path="cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>}/>
-       
-   
-      
-{/* 
-          <Route path="adminPage" element={<ProtectedRoute><AdminPage /></ProtectedRoute>}> */}
-                {/* <Route path="products/editProduct/:id" element={<ProtectedRoute><EditProduct/></ProtectedRoute>}/>
-              <Route path="products" element={<ProtectedRoute><Products /></ProtectedRoute>}/>
-              <Route path="products/addProduct" element={<ProtectedRoute><CreateProduct /></ProtectedRoute>}/> */}
-               {/* <Route path="categories" element={<ProtectedRoute><Categories /></ProtectedRoute>}/> */}
-            {/* </Route> */}
-      
-      
+          <Route path="productPage/:id" element={<SingleProduct />}/>
         </Route>
       </Routes>
       <Footer/>
