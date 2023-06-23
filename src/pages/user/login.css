@@ -236,3 +236,14 @@ h1{
     font-weight: bold;
     margin:0;
 }
+.invalid-feedback {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.backend-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}

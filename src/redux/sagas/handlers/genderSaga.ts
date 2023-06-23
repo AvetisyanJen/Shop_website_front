@@ -10,7 +10,7 @@ export function* getGenderSaga() {
     const response: AxiosResponse<Gender[]> = yield call(getGender);
 
      yield put(fetchGenders(response.data));
-     console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
+    //  console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
     // console.log(response);
   } catch (error: any) {
     console.error(error);

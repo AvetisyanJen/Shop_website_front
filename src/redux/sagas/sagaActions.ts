@@ -3,7 +3,8 @@ export const actionProducts: { [key: string]: string } = {
   };
   export const actionUser: { [key: string]: string } = {
     ADD_USER: "Add new user",
-    LOGIN_USER:"Login user"
+    LOGIN_USER:"Login user",
+    ADD_USER_FAILURE:"ADD_USER_FAILURE"
   };
   export const actionCart: { [key: string]: string } = {
     ADD_CART: "Add to cart",

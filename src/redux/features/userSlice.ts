@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-// import { RootState } from "../configureStore";
 
 interface UserState {
   user: User[];
+  error: string | null;
 }
 
 interface User {
-  
   email: string;
   userName: string;
   password: string;
@@ -14,21 +13,27 @@ interface User {
 
 const initialState: UserState = {
   user: [],
+  error: null,
 };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     addUser: (state, action: PayloadAction<User[]>) => {
-      return {
-        ...state,
-        user: action.payload,
-      };
+      state.user = action.payload;
+      state.error = null;
+    },
+    addUserFailure: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
+    loginUserFailure: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
     },
   },
 });
 
 export default userSlice.reducer;
-export const { addUser } = userSlice.actions;
-// export const selectUser = (state: RootState): User[] => state.user.user;
+export const { addUser, addUserFailure,loginUserFailure } = userSlice.actions;
+
+//  export const selectUser = (state: RootState): User[] => state.user.user;

@@ -6,14 +6,13 @@ import Home from '../pages/mainPage/Home';
 import Login from '../pages/user/login';
 import Product from '../pages/products/filterProducts';
 import CartPage from '../pages/cart/cartPage';
-// import Home from '../pages/home';
-// import SignUp from '../pages/register';
-// import Login from '../pages/login';
-// import Cart from '../pages/cart';
+import Order from '../pages/order/order';
+import ProtectedRoute from './privatRouter';
+
 // import ProtectedRoute from './privatRouter';
 // import AdminPage from '../pages/AdminPanel/AdminPage';
 // import Categories from '../pages/AdminPanel/Categories';
-// import Order from '../pages/order';
+
 
 
 const App: React.FC = () => {
@@ -27,12 +26,12 @@ const App: React.FC = () => {
            <Route path="" element={<Home/>} />
            <Route path="/login"   element={<Login/>}/>
            <Route path="products" element={<Product/>}/>
-             
+          <Route path="order" element={<Order/>}/>  
           {/* <Route path="cart" element={<CartPage/>}/> */}
-          {/* <Route path="/Register" element={<SignUp/>} />
+          <Route path="cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>}/>
        
-          <Route path="cart" element={<Cart/>}/>
-          <Route path="order" element={<Order/>}/>  */}
+   
+      
 {/* 
           <Route path="adminPage" element={<ProtectedRoute><AdminPage /></ProtectedRoute>}> */}
                 {/* <Route path="products/editProduct/:id" element={<ProtectedRoute><EditProduct/></ProtectedRoute>}/>

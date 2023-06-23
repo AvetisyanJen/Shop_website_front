@@ -44,6 +44,7 @@ export async function getCart(id: number): Promise<AxiosResponse> {
         },
       }
     );
+    console.log(response,"ashffgggg")
     return response;
   } catch (error) {
     if (axios.isAxiosError(error)) {

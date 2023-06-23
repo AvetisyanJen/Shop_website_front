@@ -9,7 +9,7 @@ export function* getMovementSaga() {
     const response: AxiosResponse<Movement[]> = yield call(getMovement);
 
      yield put(fetchMovements(response.data));
-     console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
+    //  console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
     // console.log(response);
   } catch (error: any) {
     console.error(error);

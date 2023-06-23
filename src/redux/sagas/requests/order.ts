@@ -1,9 +1,17 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
-
+const token = localStorage.getItem("token");
 
 export async function orderData(payload:any): Promise<AxiosResponse<any>> {
+
     try {
-      const response: AxiosResponse<any> = await axios.post("http://localhost:3333/order/payment",payload);
+      const response: AxiosResponse<any> = await axios.post("http://localhost:3333/order/payment",
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${token}`,
+        }
+      });
       return response;
     } catch (error) {
       if (isAxiosError(error)) {
@@ -22,8 +30,15 @@ export async function orderData(payload:any): Promise<AxiosResponse<any>> {
   }
  
   export async function getOrder(id:number): Promise<AxiosResponse<any>> {
+
     try {
-      const response: AxiosResponse<any> = await axios.get(`http://localhost:3333/order/orderProducts/${id}`);
+      const response: AxiosResponse<any> = await axios.get(`http://localhost:3333/order/orderProducts/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       return response;
     } catch (error) {
       if (isAxiosError(error)) {

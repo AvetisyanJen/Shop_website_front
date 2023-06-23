@@ -9,10 +9,10 @@ export function* addOrderSaga(action: any,) {
     try {
       const response: AxiosResponse<any> = yield call(orderData, action.payload);
       console.log(response);
-     if(response.data){
- action.navigate("/order")
+//      if(response.data){
+//  action.navigate("/order")
 
-     }
+//      }
     } catch (error: any) {
       console.error(error);
     }

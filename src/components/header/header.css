@@ -90,7 +90,7 @@ header ul li a {
   font-weight: 400;
 }
 header ul li a:hover{
-  color: rgb(245, 181, 21);
+  color: rgb(150, 24, 77);
 }
 header ul li {
   position: relative;
@@ -116,12 +116,7 @@ header ul li{
   font-size: 15px;
   font-weight: 400;
 }
-header ul li:hover {
-  background-color: #000;
-  color: rgb(245, 181, 21);
-  cursor: pointer;
-  border-radius: 50%;
-}
+
 @media (max-width: 768px) {
   header ul {
     padding-top: 30px;

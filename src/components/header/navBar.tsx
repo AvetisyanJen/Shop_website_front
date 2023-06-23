@@ -30,39 +30,8 @@ const Navbar:React.FC = () => {
               <li>
                 <Link to="/user">Brands</Link>
               </li>
-              <li onClick={() => setActive(!active)}>
-                Categories
-                {active && <div className="modal">
-                 <div>
-                  <h3>MOVEMENT TYPE</h3>
-                  <div>
-                    {movements.map((elm)=>{
-                   return <p key={elm.id}>
-                      {elm.name}
-                    </p>
-            })}
-                  </div>
-                 </div>
-                 <div>
-                  <h3>
-                    CATEGORIES
-                  </h3>
-                  <div>
-                    {categorys.map((elm)=>{
-                   return <p key={elm.id}>
-                      {elm.name}
-                    </p>
-            })}
-                  </div>
-                 </div>
-                  </div>}
-              </li>
-              <li>
-                <Link to="/contact">Men's</Link>
-              </li>
-              <li>
-                <Link to="/contact">Women's</Link>
-              </li>
+             
+              
               <li>
                 <Link to="/products">Products</Link>
               </li>

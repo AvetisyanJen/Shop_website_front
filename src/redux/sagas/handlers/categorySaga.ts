@@ -9,7 +9,7 @@ export function* getCategorySaga() {
     const response: AxiosResponse<Category[]> = yield call(getCategory);
 
      yield put(fetchCategorys(response.data));
-     console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
+    //  console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
     // console.log(response);
   } catch (error: any) {
     console.error(error);

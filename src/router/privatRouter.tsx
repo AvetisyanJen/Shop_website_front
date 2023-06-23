@@ -5,21 +5,22 @@ import { useEffect } from "react";
 const ProtectedRoute = (props: any) => {
   const navigate = useNavigate();
   const user: any = localStorage.getItem("token");
-  const decodedToken: any = decodeToken(user);
-  
+  const decoded: any = decodeToken(user);
+  console.log(decoded,"aaaaaaaaaaaaaa")
   const checkUserToken = () => {
-    if (!user || user === 'undefined' || decodedToken.role === 0) {
+    if (!user || user && decoded.is_verified==0 ) {
       return navigate('/login');
+      console.log("abc")
     }
   }
 
   useEffect(() => {
     checkUserToken();
-  }, [decodedToken]);
+  }, [user]);
 
   return (
     <>
-      {decodedToken ? props.children : null}
+      {decoded? props.children : null}
     </>
   );
 }

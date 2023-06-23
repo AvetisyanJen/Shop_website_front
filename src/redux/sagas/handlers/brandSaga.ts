@@ -11,7 +11,7 @@ export function* getBrandSaga() {
     const response: AxiosResponse<Brand[]> = yield call(getBrand);
 
      yield put(fetchBrands(response.data));
-     console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
+    //  console.log("aaaaaaaaaaaaaaaaaaaaaaa",response.data)
     // console.log(response);
   } catch (error: any) {
     console.error(error);

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/hook";
 import { allProducts } from "../../redux/features/ProductSlice";
-import { actionBrand, actionCategory, actionGender, actionMovement, actionProducts } from "../../redux/sagas/sagaActions";
+import { actionBrand, actionCart, actionCategory, actionGender, actionMovement, actionProducts } from "../../redux/sagas/sagaActions";
 import "./products.css";
 import { allCategorys } from "../../redux/features/categorySlice";
 import { allMovements } from "../../redux/features/movementSlice";
 import { allBrands } from "../../redux/features/brandSlice";
 import { allGenders } from "../../redux/features/genderSlice";
+import { decodeToken } from "react-jwt";
 
 interface Filter {
   [key: string]: string[] | string;
@@ -113,6 +114,22 @@ const Product: React.FC = () => {
       isWithinPriceRange
     );
   });
+    function addToCart(id: number) {
+    const user = localStorage.getItem("token");
+    if (user) {
+      const decoded: any = decodeToken(user);
+      const product = products.find(item => item.id === id);
+      if (product && product.count > 0) {
+        dispatch({
+          type: actionCart.ADD_CART,
+          payload: {
+            ProductId: id,
+            userId: decoded.id
+          }
+        });
+      }
+    }
+  }
 
   return (
     <div className="product-container">
@@ -249,7 +266,7 @@ const Product: React.FC = () => {
      
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div className='box'>
+            <div className='box' key={product.id}>
             <div className='product mtop'>
               <div className='img'>
              
@@ -272,7 +289,8 @@ const Product: React.FC = () => {
                    if hami le button ma click garryo bahne 
                   */}
                   
-                  <i className="fa-solid fa-cart-plus"></i>
+                  <i className="fa-solid fa-cart-plus"
+                       onClick={() => addToCart(product.id)}></i>
                   
                 </div>
               </div>
