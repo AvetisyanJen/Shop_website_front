@@ -8,6 +8,7 @@ import Product from '../pages/products/filterProducts';
 import CartPage from '../pages/cart/cartPage';
 import Order from '../pages/order/order';
 import ProtectedRoute from './privatRouter';
+import Found from '../pages/found';
 
 // import ProtectedRoute from './privatRouter';
 // import AdminPage from '../pages/AdminPanel/AdminPage';
@@ -27,7 +28,7 @@ const App: React.FC = () => {
            <Route path="/login"   element={<Login/>}/>
            <Route path="products" element={<Product/>}/>
           <Route path="order" element={<Order/>}/>  
-          {/* <Route path="cart" element={<CartPage/>}/> */}
+          <Route path="*" element={<Found/>} />
           <Route path="cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>}/>
        
    

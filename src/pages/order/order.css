@@ -1,6 +1,12 @@
 /* Order.css */
 .order-container {
     padding: 20px;
+    background-color: rgb(247, 249, 251);
+    display: flex; 
+    flex-direction: column; 
+     justify-content: center;
+     gap:20px;
+      text-align: center;
   }
   
   .order-heading {
@@ -10,8 +16,19 @@
   
   .order-item {
     margin-bottom: 20px;
-  }
+    background-color: white;
+    width: max-content;
+    text-align: center;
+      margin: auto;
+      padding: 6%;
+    /* align-items: center; */
   
+  }
+  .center{
+    display: flex;
+    flex-direction: column;
+ 
+  }
   .order-id {
     font-size: 18px;
     margin-bottom: 10px;
@@ -20,11 +37,17 @@
   .order-total {
     font-size: 16px;
     margin-bottom: 5px;
+    padding: 1%;
+    background-color: aliceblue;
   }
   
   .order-payment-date {
     font-size: 14px;
     margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 1%;
+    background-color: aliceblue;
+
   }
   
    .order-products-list {

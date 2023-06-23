@@ -9,10 +9,12 @@
   .homeSlide ul {
     position: absolute;
     bottom: 20px;
-    left: 10%;
+    right: 8.7%;
   }
  
-
+ .homeSlide{
+  margin-left: 14%;
+ }
   .homeSlide ul li button {
     background: transparent !important;
     color: transparent !important;

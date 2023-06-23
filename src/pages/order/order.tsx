@@ -12,7 +12,7 @@ const Order: React.FC = () => {
   const user: any = localStorage.getItem("token");
   const decoded: any = decodeToken(user);
 
-  const [loading, setLoading] = useState<boolean>(true); // Loading state
+  const [loading, setLoading] = useState<boolean>(true); 
 
   useEffect(() => {
     dispatch({
@@ -23,7 +23,7 @@ const Order: React.FC = () => {
 
   useEffect(() => {
     if (orderProduct.length > 0) {
-      setLoading(false); // Set loading to false when orderProduct is available
+      setLoading(false); 
     }
   }, [orderProduct]);
 
@@ -47,11 +47,16 @@ const Order: React.FC = () => {
       ) : (
         orderProduct.map((order: any) => (
           <div key={order.id} className="order-item">
+            <div className="center">
+              <div>
             <h2 className="order-id">Order ID: {order.id}</h2>
             <p className="order-total">Total: ${order.total}.00</p>
             <p className="order-payment-date">
               Payment Date: {formatDateTime(order.createdAt)}
             </p>
+            </div>
+            </div>
+            <div>
             <div className="order-products-list">
               {order.OrderProducts.map((product: any) => (
                 <div key={product.id} className="order-product">
@@ -83,6 +88,7 @@ const Order: React.FC = () => {
                   </div>
                 </div>
               ))}
+              </div>
             </div>
           </div>
         ))

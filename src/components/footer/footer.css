@@ -2,6 +2,10 @@ footer {
     background-color: black;
     padding: 100px 0;
     color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
   footer h1 {
     margin-bottom: 30px;
@@ -35,7 +39,8 @@ footer {
     opacity: 0.5;
   }
   .log2{
-    width: 120px;
-    height: 100px;
+    width: 100px;
+    height: 80px;
+    margin-bottom:40px;
   }
   
