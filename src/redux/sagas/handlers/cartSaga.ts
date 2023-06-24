@@ -6,6 +6,7 @@ import { Cart, editDecremCartItems, editIncremCartItems, fetchCartItems} from ".
 export function* addCartSaga(action: any) {
   try {
     console.log(action.payload);
+
     const response: AxiosResponse<any> = yield call(addCart, action.payload);
     console.log(response);
     // yield put(fetchCartItems(response.data));

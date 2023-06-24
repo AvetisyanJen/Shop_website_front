@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Layout from '../components/layout';
 import Footer from '../components/footer/footer';
@@ -18,6 +18,7 @@ import SingleProduct from '../pages/singleProduct.tsx/oneProduct';
 
 
 const App: React.FC = () => {
+
   return (
     <Router>
        <Routes>
@@ -28,7 +29,7 @@ const App: React.FC = () => {
            <Route path="" element={<Home/>} />
            <Route path="/login"   element={<Login/>}/>
            <Route path="products" element={<Product/>}/>
-          <Route path="order" element={<Order/>}/>  
+          <Route path="order" element={<ProtectedRoute><Order/></ProtectedRoute>}/>  
           <Route path="*" element={<Found/>} />
           <Route path="cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>}/>
           <Route path="productPage/:id" element={<SingleProduct />}/>

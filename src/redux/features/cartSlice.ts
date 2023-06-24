@@ -45,6 +45,8 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     fetchCartItems: (state, action: PayloadAction<Cart[]>) => {
+      const quantity = action.payload.reduce((total, item) => total + item.quantity, 0);
+      localStorage.setItem('cartItemsCount', String(quantity));
       return {
         ...state,
         carts: action.payload,
@@ -52,16 +54,30 @@ const cartSlice = createSlice({
     },
 
     editIncremCartItems: (state, action: PayloadAction< Cart>) => {
-      console.log(action.payload, "hello");
-    
-        state.carts.push(action.payload);
+      // console.log(action.payload, "hello");
+        
+            
+      // state.carts.push(action.payload);
+          
+      const productId = action.payload;
+      const cartItem = state.carts.find((item) => item.ProductId === +productId);
+
+      if (cartItem && cartItem.quantity < cartItem.Product.count) {
+        cartItem.quantity++;
+      }
    
     },
     
   editDecremCartItems: (state, action: PayloadAction< Cart>) => {
-      console.log(action.payload, "hello");
+      // console.log(action.payload, "hello");
     
-        state.carts.push(action.payload);
+      //   state.carts.push(action.payload);
+      const productId = action.payload;
+      const cartItem = state.carts.find((item) => item.ProductId ===+ productId);
+
+      if (cartItem && cartItem.quantity > 1) {
+        cartItem.quantity--;
+      }
    
     }
     

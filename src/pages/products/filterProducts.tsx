@@ -124,7 +124,7 @@ const Product: React.FC = () => {
       if (product && product.count > 0) {
         dispatch({
           type: actionCart.ADD_CART,
-          payload: {
+           payload: {
             ProductId: id,
             userId: decoded.id
           }
@@ -278,8 +278,11 @@ const Product: React.FC = () => {
             style={{ width: '200px', height: '200px' }} alt={product.name} />)}
               
               </div>
+              </Link>
               <div className='product-details'>
-                <h3>{product?.Movement?.name+"/"}{product.name}</h3>
+              <Link to={`/productPage/${product.id}`}>
+                <h3>{product.name}</h3>
+                </Link>
                 <div className='rate'>
                   <i className='fa fa-star'></i>
                   <i className='fa fa-star'></i>
@@ -296,7 +299,7 @@ const Product: React.FC = () => {
                 </div>
 
               </div>
-              </Link>
+            
             </div>
             
           </div>
