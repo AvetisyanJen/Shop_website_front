@@ -50,15 +50,7 @@ li {
 .capitalize {
   text-transform: capitalize;
 }
-/* .RText {
-  text-align-last: right;
-} */
-/* input,
-button {
-  border: none;
-  outline: none;
-  background-color: none;
-} */
+
 .row {
   width: 50%;
 }
@@ -79,46 +71,11 @@ button {
   height: 70px;
 }
 
-/*---------category----------*/
+
 .contentWidth {
   width: 77%;
 }
-/* .category {
-  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
-  background-color: #fff;
-  width: 23%;
-  height: 510px;
-  padding: 15px 0;
-  border-radius: 5px;
-  margin-top: 5px;
-} */
-/* .category img { */
-  /* width: 30px;
-  height: 30px;
-  margin-top: 10px;
-  object-fit: contain;
-} */
-/* .category span {
-  margin: 10px 20px;
-  text-transform: capitalize;
-} */
-/* .category .box {
-  transition: 0.5s;
-  padding: 0 20px;
-}
-.category .box:hover {
-  background-color: #ffe1e6;
-  cursor: pointer;
-} */
 
-/*---------category----------*/
-/* .btn-primary {
-  background: #e94560;
-  padding: 13px 40px;
-  font-weight: bold;
-  color: #fff;
-  border-radius: 5px;
-} */
 .top {
   margin-top: 80px;
 }
@@ -126,14 +83,14 @@ button {
   margin-top: 40px;
 }
 .heading i {
-  color: #e94560;
+  color: #3f0725;
   margin: 10px;
 }
 .discount {
   position: absolute;
   top: 0;
   left: 0;
-  background: #e94560;
+  background: #5e1b48;
   padding: 3px 10px;
   font-size: 12px;
   border-radius: 50px;
@@ -142,7 +99,7 @@ button {
 }
 /*---------product-----------*/
 .product {
-  background: #fff;
+  background: #f9f7f7;
   padding: 20px;
   position: relative;
   border-radius: 8px;
@@ -162,22 +119,8 @@ button {
   display: flex;
   justify-content: space-between;
   color: #e94560;
-} */
-/* .price button {
-  background: none;
-  color: #e94560;
-  font-size: 20px;
-  transition: 0.5s;
-  border: 1px solid rgb(3 0 71 / 9%);
-  width: 35px;
-  height: 35px;
-  border-radius: 5px;
-}
-.price button:hover {
-  cursor: pointer;
-  background-color: #e94560;
-  color: #fff;
-} */
+} 
+
 
 
 .product:hover .product-like {
@@ -188,33 +131,35 @@ button {
 .control-btn .next,
 .control-btn .prev {
   position: absolute;
-  top: 40%;
-  width: 50px;
-  height: 50px;
-  line-height: 60px;
-  background: #0f3460;
-  border-radius: 50%;
+  top: 50%;
+  padding: auto;
+
+border:none;
+
+   background: #eeeff1;
+ border-radius: 50%; 
   transform: 0.5s;
-  z-index: 5;
+  z-index: 7;
 }
 .control-btn .prev {
-  left: -20px;
+  left: -30px;
 }
 .control-btn .next {
-  right: -20px;
+  right: -30px;
 }
 .control-btn .prev i,
 .control-btn .next i {
-  font-size: 20px;
+  font-size: 30px;
   transition: 0.5s;
-  color: #fff;
+  color: #110f0f;
+  
+
 }
 .control-btn .prev:hover,
-/* .control-btn .next:hover {
-  background: #e94560;
-  color: white;
+.control-btn .next:hover {
+
   cursor: pointer;
-} */
+}
 /* ----- control btn -------*/ 
 /*----- heading -------*/
 .heading .heading-left i {
@@ -227,7 +172,7 @@ button {
 .heading .heading-right i,
 .heading .heading-right {
   text-align: right;
-  color: grey;
+  color: rgb(118, 20, 20);
 }
  /* ----- heading ------- */
 .grid {

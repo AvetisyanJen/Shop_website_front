@@ -8,7 +8,7 @@ import { getOrderProduct } from "../../features/orderSlice";
 export function* addOrderSaga(action: any,) {
     try {
       const response: AxiosResponse<any> = yield call(orderData, action.payload);
-      console.log(response);
+   
 //      if(response.data){
 //  action.navigate("/order")
 
@@ -21,7 +21,7 @@ export function* addOrderSaga(action: any,) {
   export function* getOrderSaga(action:any) {
     try {
       const response: AxiosResponse<any> = yield call(getOrder,action.user_id);
-      console.log(response);
+  
       yield put(getOrderProduct(response.data));
 
     } catch (error: any) {

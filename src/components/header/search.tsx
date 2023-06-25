@@ -3,41 +3,58 @@ import { decodeToken } from 'react-jwt';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/hook';
 import { cartItems } from '../../redux/features/cartSlice';
-import { actionCart } from '../../redux/sagas/sagaActions';
+import { actionCart, actionProducts } from '../../redux/sagas/sagaActions';
 import { useDispatch } from 'react-redux';
 
 
 const Search: React.FC = () => {
 
-  window.addEventListener("scroll", function () {
-    const search:any = document.querySelector(".search")
-    search.classList.toggle("active", window.scrollY > 100)
-  })
-  const navigate = useNavigate();
-  const userToken:any = localStorage.getItem('token');
-  const profile:any = decodeToken(userToken);
-
-  const CartItems = useAppSelector(cartItems);
-
-  const dispatch = useDispatch();
-const quantity=CartItems.reduce((price, item) => price + item.quantity, 0)
+  // window.addEventListener("scroll", function () {
+  //   const search:any = document.querySelector(".search")
+  //   search.classList.toggle("active", window.scrollY > 100)
+  // })
   useEffect(() => {
+    const handleScroll = () => {
+      const search: any = document.querySelector('.search');
+      search.classList.toggle('active', window.scrollY > 100);
+    };
 
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const navigate = useNavigate();
+  const userToken: any = localStorage.getItem('token');
+  const profile: any = decodeToken(userToken);
+  const [quantity, setQuantity] = useState(0);
+  const CartItems = useAppSelector(cartItems);
+  const [searchQuery, setSearchQuery] = useState('')
+  const dispatch = useDispatch();
+
+  useEffect(() => {
     if (profile) {
       dispatch({
         type: actionCart.GET_CART,
         id: profile.id,
       });
-
     }
-
-  
-  }, [dispatch,quantity]);
-
+  }, [dispatch]);
+  useEffect(() => {
+    const updatedQuantity = CartItems.reduce((total, item) => total + item.quantity, 0);
+    setQuantity(updatedQuantity);
+  }, [CartItems]);
 
   const logOut = () => {
     localStorage.removeItem('token');
     navigate('/');
+  };
+  const handleSearch = (e: any) => {
+    e.preventDefault();
+    dispatch({ type: actionProducts.FIND_PRODUCT, productName: searchQuery, navigate })
+
   };
 
   return (
@@ -49,29 +66,34 @@ const quantity=CartItems.reduce((price, item) => price + item.quantity, 0)
           </div>
 
           <div className="search-box f_flex">
+
             <i className="fa fa-search"></i>
-            <input className="input-search" type="text" placeholder="Search and hit enter..." />
+            <form onSubmit={handleSearch} >
+              <input className="input-search" type="text" placeholder="Search ..."
+                value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+            </form>
           </div>
 
           <div className="icon f_flex width">
             <div className="cart">
               <Link to="/cart">
                 <i className="fa fa-shopping-bag icon-circle" style={{ color: '#000000' }}></i>
-                {CartItems.length > 0 &&  <span>{quantity}</span>}
+                {quantity > 0 && <span>{quantity}</span>}
               </Link>
             </div>
-            <Link to="/login">
-              {userToken ? (
-                <div className="f_flex">
-                  <div className="icon-circle" style={{ fontWeight: 'bold' }}>
-                    {profile?.userName.split('')[0]}
-                  </div>
-                  <i className="fa-solid fa-arrow-right-from-bracket icon-circle" onClick={logOut}></i>
+
+            {userToken ? (
+              <div className="f_flex">
+                <div className="icon-circle" style={{ fontWeight: 'bold' }}>
+                  {profile?.userName.split('')[0]}
                 </div>
-              ) : (
-                <i className="fa fa-user icon-circle"></i>
-              )}
+                <i className="fa-solid fa-arrow-right-from-bracket icon-circle" onClick={logOut}></i>
+              </div>
+            ) : (<Link to="/login">
+              <i className="fa fa-user icon-circle"></i>
             </Link>
+            )}
+
           </div>
         </div>
       </section>

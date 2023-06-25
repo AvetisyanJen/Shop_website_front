@@ -1,0 +1,9 @@
+.flash {
+    background: #ebe2ea;
+    padding: 50px 0;
+  }
+  .sold img{
+    display: flex;
+    justify-content: center;
+     margin-left: 50%;
+  }

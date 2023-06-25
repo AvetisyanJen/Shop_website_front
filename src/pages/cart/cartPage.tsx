@@ -9,27 +9,27 @@ import StripeCheckout from "react-stripe-checkout";
 import { useNavigate } from "react-router-dom";
 import Login from "../user/login";
 
-// const Cart = ({ CartItem, addToCart, decreaseQty }) => {
-  const CartPage:React.FC = () => {
+
+const CartPage: React.FC = () => {
   const CartItems = useAppSelector(cartItems);
   const dispatch = useAppDispatch();
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   const [shouldUpdate, setShouldUpdate] = useState(false);
   const [isDel, setisDel] = useState(false);
   const user: any = localStorage.getItem("token");
   const decoded: any = decodeToken(user);
   const totalPrice = CartItems.reduce((price, item) => price + item.quantity * item.Product.price, 0)
-console.log(decoded)
+
   useEffect(() => {
-     if(decoded){
-      dispatch ({
+    if (decoded) {
+      dispatch({
         type: actionCart.GET_CART,
         id: decoded.id,
-       });
-      }
-  },[dispatch,shouldUpdate,isDel]) 
+      });
+    }
+  }, [dispatch, shouldUpdate, isDel])
 
-   const incrementCount = (id: number) => {
+  const incrementCount = (id: number) => {
     setShouldUpdate(!shouldUpdate);
     dispatch({
       type: actionCart.INCREMENT,
@@ -39,7 +39,7 @@ console.log(decoded)
       }
     });
   };
-    const decrementCount = (id: number) => {
+  const decrementCount = (id: number) => {
     setShouldUpdate(!shouldUpdate);
     dispatch({
       type: actionCart.DECREMENT,
@@ -49,10 +49,10 @@ console.log(decoded)
       }
     });
   };
-    const RemoveItem = (id: number) => {
+  const RemoveItem = (id: number) => {
     setisDel(!isDel);
     dispatch({
-      type: actionCart. DELETE_CART,
+      type: actionCart.DELETE_CART,
       payload: {
         ProductId: id,
         userId: decoded.id
@@ -60,31 +60,33 @@ console.log(decoded)
     });
   };
 
-    const makePayment = (token:any) => {
-   
-    dispatch({type:actionOrder.PAYMENT,
-      payload:{token,userId:decoded.id}})
- navigate('/order')
-   }
+  const makePayment = (token: any) => {
+
+    dispatch({
+      type: actionOrder.PAYMENT,
+      payload: { token, userId: decoded.id }
+    })
+    navigate('/order')
+  }
   return (
     <>
-    {user ? (<section className='cart-items'>
+      {user ? (<section className='cart-items'>
         <div className='cont d_flex'>
-    
+
 
           <div className='cart-details'>
             {CartItems.length === 0 && <h1 className='no-items product'>No Items are add in Cart</h1>}
 
-          
-            {CartItems.map((item,id) => {
+
+            {CartItems.map((item, id) => {
               const productQty = item.Product.price * item.quantity
 
               return (
                 <div className='cart-list product d_flex' key={id}>
                   <div className='img'>
-                    <img 
-                     src={'http://localhost:3333/images/' + item?.Product?.Photos[0]?.url}
-                     alt='' />
+                    <img
+                      src={'http://localhost:3333/images/' + item?.Product?.Photos[0]?.url}
+                      alt='' />
                   </div>
                   <div className='cart-details'>
                     <h3>{item.Product?.name}</h3>
@@ -95,15 +97,15 @@ console.log(decoded)
                   </div>
                   <div className='cart-items-function'>
                     <div className='removeCart'>
-                 
-                        <i 
-                           onClick={() => RemoveItem(item.ProductId)}
+
+                      <i
+                        onClick={() => RemoveItem(item.ProductId)}
                         className='fa-solid fa-xmark' ></i>
-                      
+
                     </div>
-                 
+
                     <div className='cartControl d_flex'>
-                      <div className='incCart' onClick={() =>  incrementCount(item.ProductId)}>
+                      <div className='incCart' onClick={() => incrementCount(item.ProductId)}>
                         <i className='fa-solid fa-plus'></i>
                       </div>
                       <p className="number">{item.quantity}</p>
@@ -127,20 +129,20 @@ console.log(decoded)
 
             </div>
             <div className="pay">
-            <StripeCheckout
-              stripeKey="pk_test_51KjlUTEwie5RP3GFlb1RGB6Re8hesKixRU6ofIHQ6IcifCzvGY8KW7bxzNy89bfzgxQHf69Sx5U0EZSJ92Z0KwZm00AjClehJP"
-              token={makePayment}
-              name="Buy products"
-              amount={totalPrice * 100}
-             
-       
-            />
+              <StripeCheckout
+                stripeKey="pk_test_51KjlUTEwie5RP3GFlb1RGB6Re8hesKixRU6ofIHQ6IcifCzvGY8KW7bxzNy89bfzgxQHf69Sx5U0EZSJ92Z0KwZm00AjClehJP"
+                token={makePayment}
+                name="Buy products"
+                amount={totalPrice * 100}
+
+
+              />
             </div>
           </div>
-          
-                
+
+
         </div>
-      </section>):(<Login/>)}
+      </section>) : (<Login />)}
     </>
   )
 }

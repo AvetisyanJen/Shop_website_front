@@ -2,6 +2,7 @@ import React from "react"
 // import Categories from "./Categories"
 import "./Home.css"
 import SliderHome from "./slider"
+import Sold from "../sold/sold"
 
 
 const Home:React.FC = () => {
@@ -9,9 +10,12 @@ const Home:React.FC = () => {
     <>
       <section className='home'>
         <div className='cont d_flex'>
-          {/* <Categories /> */}
+           
           <SliderHome />
+ 
+      
         </div>
+        <Sold/>
       </section>
     </>
   )

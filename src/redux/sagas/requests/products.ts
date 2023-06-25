@@ -19,7 +19,7 @@ export async function getData(): Promise<AxiosResponse> {
   }
 }
 export async function oneData(id:any): Promise<AxiosResponse> {
-  console.log(id)
+  
   try {
     const response: AxiosResponse = await axios.get(`http://localhost:3333/prod/one/${id}`);
     return response;
@@ -37,6 +37,50 @@ export async function oneData(id:any): Promise<AxiosResponse> {
     throw error;
   }
 }
+
+
+
+export async function totalPurchasesData(): Promise<AxiosResponse> {
+  try {
+    const response: AxiosResponse = await axios.get("http://localhost:3333/prod/purchas");
+    return response;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      if (isNetworkError(axiosError)) {
+        console.error("Network Error occurred:", error);
+      } else {
+        console.error("Other Axios Error occurred:", error);
+      }
+    } else {
+      console.error("Other Error occurred:", error);
+    }
+    throw error;
+  }
+}
+
+
+export async function searchProduct(productName:string): Promise<AxiosResponse> {
+  try {
+    const response: AxiosResponse = await axios.get(`http://localhost:3333/prod/search?name=${productName}`);
+    return response;
+  } catch (error) {
+    if (isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+      if (isNetworkError(axiosError)) {
+        console.error("Network Error occurred:", error);
+      } else {
+        console.error("Other Axios Error occurred:", error);
+      }
+    } else {
+      console.error("Other Error occurred:", error);
+    }
+    throw error;
+  }
+}
+
+
+
 
 function isAxiosError(error: any): error is AxiosError {
   return error.isAxiosError !== undefined;

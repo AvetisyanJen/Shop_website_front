@@ -10,6 +10,7 @@ import Order from '../pages/order/order';
 import ProtectedRoute from './privatRouter';
 import Found from '../pages/found';
 import SingleProduct from '../pages/singleProduct.tsx/oneProduct';
+import Search from '../pages/search/seach';
 
 // import ProtectedRoute from './privatRouter';
 // import AdminPage from '../pages/AdminPanel/AdminPage';
@@ -31,6 +32,7 @@ const App: React.FC = () => {
            <Route path="products" element={<Product/>}/>
           <Route path="order" element={<ProtectedRoute><Order/></ProtectedRoute>}/>  
           <Route path="*" element={<Found/>} />
+          <Route path="/search" element={<Search/>} />
           <Route path="cart" element={<ProtectedRoute><CartPage /></ProtectedRoute>}/>
           <Route path="productPage/:id" element={<SingleProduct />}/>
         </Route>

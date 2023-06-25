@@ -5,10 +5,10 @@ import { Cart, editDecremCartItems, editIncremCartItems, fetchCartItems} from ".
 
 export function* addCartSaga(action: any) {
   try {
-    console.log(action.payload);
+    // console.log(action.payload);
 
     const response: AxiosResponse<any> = yield call(addCart, action.payload);
-    console.log(response);
+    // console.log(response);
     // yield put(fetchCartItems(response.data));
   } catch (error: any) {
     console.error(error);
@@ -21,7 +21,7 @@ export function* getCartSaga(action: any) {
  
       yield put(fetchCartItems(response.data));
     
-    console.log(response)
+    // console.log(response)
   } catch (error: any) {
     console.error(error);
     // Handle error if needed
@@ -32,7 +32,7 @@ export function* getCartSaga(action: any) {
 export function* incremCartSaga(action: any): Generator<any, void, AxiosResponse<Cart, any>> {
   try {
     const response: AxiosResponse<Cart> = yield call(incrQuantity, action.payload);
-    console.log(response.data);
+    // console.log(response.data);
     yield put(editIncremCartItems(response.data));
   } catch (error: any) {
     console.error(error);
@@ -42,9 +42,9 @@ export function* incremCartSaga(action: any): Generator<any, void, AxiosResponse
 
 export function* decremCartSaga(action: any): Generator<any, void, AxiosResponse<Cart, any>> {
   try {
-    console.log(action.payload)
+    // console.log(action.payload)
     const response: AxiosResponse<Cart> = yield call(decrQuantity, action.payload);
-    console.log(response);
+    // console.log(response);
     yield put(editDecremCartItems(response.data));
     // console.log(response);
   } catch (error: any) {
@@ -54,9 +54,9 @@ export function* decremCartSaga(action: any): Generator<any, void, AxiosResponse
 }
 export function* deleteCartSaga(action: any): Generator<any, void, AxiosResponse<Cart, any>> {
   try {
-    console.log(action.payload)
+    // console.log(action.payload)
     const response: AxiosResponse<Cart> = yield call(deleteCart, action.payload);
-    console.log(response);
+    // console.log(response);
 
   } catch (error: any) {
     console.error(error);

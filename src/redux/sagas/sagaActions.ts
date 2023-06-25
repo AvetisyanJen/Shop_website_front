@@ -1,6 +1,8 @@
 export const actionProducts: { [key: string]: string } = {
     GET_PRODUCTS: "Get all products",
-    GET_ONEPRODUCT:'Get one product'
+    GET_ONEPRODUCT:'Get one product',
+    GET_TOTALPURCHASES:"Get total purchases 10 products",
+    FIND_PRODUCT:"search name of product"
   };
   export const actionUser: { [key: string]: string } = {
     ADD_USER: "Add new user",

@@ -115,8 +115,8 @@ const Product: React.FC = () => {
       isWithinPriceRange
     );
   });
-    function addToCart(id: number) {
- 
+  function addToCart(id: number) {
+
     const user = localStorage.getItem("token");
     if (user) {
       const decoded: any = decodeToken(user);
@@ -124,7 +124,7 @@ const Product: React.FC = () => {
       if (product && product.count > 0) {
         dispatch({
           type: actionCart.ADD_CART,
-           payload: {
+          payload: {
             ProductId: id,
             userId: decoded.id
           }
@@ -262,50 +262,59 @@ const Product: React.FC = () => {
         </div>
       </div>
 
-{/* product list */}
+      {/* product list */}
 
       <div className="product-list">
 
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (
-            <div className='box' key={product.id}>
-              
-            <div className='product mtop'>
-            <Link to={`/productPage/${product.id}`}>
-              <div className='img'>
-             
-            {product.Photos && ( <img src={"http://localhost:3333/images/" + product?.Photos[0]?.url}
-            style={{ width: '200px', height: '200px' }} alt={product.name} />)}
-              
-              </div>
-              </Link>
-              <div className='product-details'>
-              <Link to={`/productPage/${product.id}`}>
-                <h3>{product.name}</h3>
+            <div className={`box ${product.count < 1 ? 'out-of-stock' : ''}`} key={product.id}>
+
+              <div className='product mtop'>
+                <Link to={`/productPage/${product.id}`}>
+                  <div className='img'>
+                    {product.Photos && (
+                      <img
+                        src={"http://localhost:3333/images/" + product?.Photos[0]?.url}
+                        style={{ width: '200px', height: '200px' }}
+                        alt={product.name}
+                      />
+                    )}
+                  </div>
                 </Link>
-                <div className='rate'>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                </div>
+                <div className='product-details'>
+                  <Link to={`/productPage/${product.id}`}>
+                    <h3>{product.name}</h3>
+                  </Link>
+                  <div className='rate'>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                    <i className='fa fa-star'></i>
+                  </div>
 
-                <div className='price'>
-                  <h5>${product.price}.00 </h5>
-                  <i className="fa-solid fa-cart-plus"
-                       onClick={() =>  addToCart(product.id) }></i>
-                  
+                  {product.count > 0 ? (
+                    <div className='price'>
+                      <h5>${product.price}.00 </h5>
+                      <i
+                        className="fa-solid fa-cart-plus"
+                        onClick={() => addToCart(product.id)}
+                      ></i>
+                    </div>
+                  ) : (
+                    <div className='out-of-stock'>
+                      <h5>Out of Stock</h5>
+                    </div>
+                  )}
                 </div>
-
               </div>
-            
             </div>
-            
-          </div>
           ))
+        
+
         ) : (
-          <p>No products found.</p>
+        <p>No products found.</p>
         )}
       </div>
 

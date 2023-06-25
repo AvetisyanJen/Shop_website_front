@@ -54,10 +54,6 @@ const cartSlice = createSlice({
     },
 
     editIncremCartItems: (state, action: PayloadAction< Cart>) => {
-      // console.log(action.payload, "hello");
-        
-            
-      // state.carts.push(action.payload);
           
       const productId = action.payload;
       const cartItem = state.carts.find((item) => item.ProductId === +productId);
@@ -69,9 +65,7 @@ const cartSlice = createSlice({
     },
     
   editDecremCartItems: (state, action: PayloadAction< Cart>) => {
-      // console.log(action.payload, "hello");
-    
-      //   state.carts.push(action.payload);
+
       const productId = action.payload;
       const cartItem = state.carts.find((item) => item.ProductId ===+ productId);
 

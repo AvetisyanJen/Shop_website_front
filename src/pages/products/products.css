@@ -1,8 +1,8 @@
 .product-container {
   display: flex;
-  /* flex-direction: column; */
+
   justify-content:start;
-  /* align-items: center; */
+  
   gap:10px;
 }
 .products {
@@ -110,10 +110,7 @@
   box-shadow: rgba(58, 5, 41, 0.09) 0px 6px 5px;
   margin: 10px;
 }
-.product h3 {
-  /* font-weight: 400; */
-  /* font-size: 17px; */
-}
+
 .product .rate i {
   font-size: 15px;
   color: #ffcd4e;
@@ -132,8 +129,7 @@
   font-size: 25px;
   text-align: center;
   transition: 0.5s;
- 
-  /* width: 10px; */
+
    height: 40px; 
   border-radius: 50%;
 }
@@ -146,4 +142,9 @@
  
 }
 
+.out-of-stock {
+  opacity: 0.5; 
+  border: 1px solid red;
+
+}
 

@@ -1,17 +1,17 @@
 import React from "react"
 import "./footer.css"
 
-const Footer:React.FC = () => {
+const Footer: React.FC = () => {
   return (
     <>
       <footer>
         <div className='cont grid2'>
           <div className='box'>
-     <img className="log2" src="/images/spitak.png"/>
+            <img className="log2" src="/images/spitak.png" />
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Auctor libero id et, in gravida. Sit diam duis mauris nulla cursus. Erat et lectus vel ut sollicitudin elit at amet.</p>
             <div className='icon d_flex'>
-              
-           
+
+
             </div>
           </div>
 

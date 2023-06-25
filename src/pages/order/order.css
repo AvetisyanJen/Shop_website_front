@@ -21,7 +21,7 @@
     text-align: center;
       margin: auto;
       padding: 6%;
-    /* align-items: center; */
+    
   
   }
   .center{
@@ -54,20 +54,7 @@
     display: flex;
     flex-wrap: wrap;
   } 
-  
-  /* .order-product {
-    flex: 0 0 33.33%;
-    padding: 10px;
-  }  */
-  
-  /* .orderDiv {
-    border: 1px solid #ccc;
-    padding: 10px;
-  } */
-  
-  /* .product {
-    display: flex;
-  } */
+
   
   .img {
     width: 200px;
@@ -75,9 +62,7 @@
     margin-right: 10px;
   }
   
-  /* .product-details {
-    flex: 1;
-  } */
+  
   
   .rate {
     margin-bottom: 5px;

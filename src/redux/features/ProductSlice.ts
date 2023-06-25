@@ -34,17 +34,23 @@ export interface Product {
   Brand: Brand; 
   Photos: Photos[];
   gender:Gender;
+  totalPurchases:number
+
 }
 
 interface ProductState {
   products: Product[];
   selectedProduct: Product | null;
+  totalPurchases:Product[],
+  searchResult: Product | null;
 }
 
 const initialState: ProductState = {
   products: [],
   selectedProduct: null,
-
+  totalPurchases:[],
+  searchResult: null,
+ 
 };
 
 const productSlice = createSlice({
@@ -57,6 +63,12 @@ const productSlice = createSlice({
         products: action.payload,
       };
     },
+    fetchTotalPurchases: (state, action: PayloadAction<Product[]>) => {
+      return {
+        ...state,
+        totalPurchases: action.payload,
+      };
+    },
     fetchProductSuccess: (state, action: PayloadAction<Product>) => {
       return {
         ...state,
@@ -64,11 +76,20 @@ const productSlice = createSlice({
         selectedProduct: action.payload,
       };
     },
+    setSearchResult: (state, action: PayloadAction<Product | null>) => {
+      return {
+        ...state,
+        searchResult: action.payload,
+      };
+    },
   },
 });
 
 export default productSlice.reducer;
-export const {fetchProducts,  fetchProductSuccess, } = productSlice.actions;
+export const {fetchProducts,  fetchProductSuccess, fetchTotalPurchases,setSearchResult} = productSlice.actions;
 export const allProducts = (state:RootState):Product[]=> state.product.products
 export const getSelectedProduct = (state: RootState): Product | null =>
   state.product.selectedProduct;
+export const total=(state: RootState): Product []=>state.product.totalPurchases;
+export const search=(state: RootState): Product | null =>
+state.product.searchResult;
